@@ -57,6 +57,17 @@ export class ConsultaListarComponent {
         input: true,
         size: 'lg', // Tamaño grande
         block: true // Ocupar todo el ancho 
+      },
+      {
+        type: 'button',
+        key: 'clear',
+        label: 'Limpiar',
+        action: 'reset',
+        theme: 'secondary',
+        customClass: 'text-center', // Centrar el botón
+        input: true,
+        size: 'lg', // Tamaño grande
+        block: true // Ocupar todo el ancho 
       }
     ]
   };
