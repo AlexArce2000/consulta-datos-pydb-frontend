@@ -50,7 +50,7 @@ export class ConsultaListarComponent {
         type: 'button',
         key: 'search',
         label: 'Buscar',
-        action: 'event', // Cambiado de 'submit' a 'event'
+        action: 'event',
         event: 'searchClicked'
       }
     ]
