@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
+import { Component, ViewChild} from '@angular/core';
 import { TabulatorFull as Tabulator } from 'tabulator-tables';
 import { CommonModule } from '@angular/common';
 import { PersonaService } from '../services/persona.service';
