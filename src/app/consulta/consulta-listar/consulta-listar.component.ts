@@ -19,13 +19,13 @@ export class ConsultaListarComponent {
       {
         type: 'textfield',
         key: 'nombre',
-        label: 'Nombre',
+        label: 'Nombres',
         input: true
       },
       {
         type: 'textfield',
         key: 'apellido',
-        label: 'Apellido',
+        label: 'Apellidos',
         input: true
       },
       {
