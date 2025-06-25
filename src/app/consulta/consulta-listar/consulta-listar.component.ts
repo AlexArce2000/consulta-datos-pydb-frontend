@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
 import { TabulatorFull as Tabulator } from 'tabulator-tables';
+import { CommonModule } from '@angular/common';
 import { PersonaService } from '../services/persona.service';
 import { Formio } from '@formio/js';
 import { FormioModule } from '@formio/angular';
@@ -7,13 +8,13 @@ import { FormioModule } from '@formio/angular';
 @Component({
   selector: 'app-consulta-listar',
   standalone: true,
-  imports: [FormioModule],
+  imports: [CommonModule, FormioModule],
   templateUrl: './consulta-listar.component.html',
   styleUrls: ['./consulta-listar.component.css']
 })
-export class ConsultaListarComponent implements OnInit {
+export class ConsultaListarComponent {
   tabulatorTable: any;
-  isSearching = false;  // Control del estado de búsqueda
+  
   formDefinition = {
     components: [
       {
@@ -54,14 +55,12 @@ export class ConsultaListarComponent implements OnInit {
           time_24hr: false
         }
       },
-      // Eliminamos async aquí
       {
         type: 'button',
         key: 'submit',
         label: 'Buscar',
         action: 'submit',
-        theme: 'primary',
-        disableOnInvalid: true
+        theme: 'primary'
       }
     ]
   };
@@ -121,20 +120,14 @@ export class ConsultaListarComponent implements OnInit {
 
   onSubmit(event: any) {
     console.log('Formulario enviado:', event.data);
-
-    // Activar estado de carga
-    this.isSearching = true;
-
     if (event.data) {
       this.personaService.buscarPersonas(event.data).subscribe(
         (response: any) => {
           this.tabulatorTable.setData(response);
-          this.isSearching = false;  // Desactivar estado de carga
         },
         (error) => {
           console.error('Error al buscar personas:', error);
           this.tabulatorTable.clearData();
-          this.isSearching = false;  // Desactivar estado de carga
         }
       );
     }
