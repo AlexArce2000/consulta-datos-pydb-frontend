@@ -51,7 +51,12 @@ export class ConsultaListarComponent {
         key: 'search',
         label: 'Buscar',
         action: 'event',
-        event: 'searchClicked'
+        event: 'searchClicked',
+        theme: 'primary',
+        customClass: 'text-center', // Centrar el botón
+        input: true,
+        size: 'lg', // Tamaño grande
+        block: true // Ocupar todo el ancho 
       }
     ]
   };

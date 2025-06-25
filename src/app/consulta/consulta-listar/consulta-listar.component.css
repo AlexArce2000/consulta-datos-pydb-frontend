@@ -1,16 +1,58 @@
-#personas-table {
-  margin-top: 20px;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-}
-
-.formio-form {
-  background: #f9f9f9;
-  padding: 20px;
-  border-radius: 4px;
+.card {
+  border-radius: 8px;
+  overflow: hidden;
   margin-bottom: 20px;
 }
-/* Spinner de carga pantalla completa */
+.containerConsulta {
+  background-color: #9b9b9b;
+}
+
+.card-header {
+  border-bottom: 1px solid #e9ecef;
+}
+.formio-form-custom {
+  background: #fff;
+  padding: 15px;
+  border-radius: 6px;
+}
+
+.additional-fields .form-group {
+  margin-bottom: 1.5rem;
+}
+
+.form-control {
+  border-radius: 5px;
+  border: 1px solid #ced4da;
+}
+
+.btn-primary {
+  background-color: #0056b3;
+  border-color: #0056b3;
+  border-radius: 5px;
+  padding: 10px 30px;
+  font-size: 1.1rem;
+}
+
+.btn-primary:hover {
+  background-color: #003d7a;
+  border-color: #003d7a;
+}
+
+hr {
+  border-top: 2px solid #e9ecef;
+}
+
+.custom-checkbox .custom-control-label::before {
+  border-radius: 3px;
+}
+
+#personas-table {
+  min-height: 300px;
+  border: 1px solid #e0e0e0;
+  border-radius: 6px;
+  background: #fff;
+}
+
 .loading-overlay {
   position: fixed;
   top: 0;
@@ -31,6 +73,12 @@
   border-top: 5px solid #3498db;
   border-radius: 50%;
   animation: spin 1s linear infinite;
+}
+.custom-button {
+  width: 250px; /* Ajusta el tamaño */
+  text-align: center; /* Centra el texto dentro del botón */
+  display: block;
+  margin: 0 auto; /* Centra el botón en su contenedor */
 }
 
 @keyframes spin {

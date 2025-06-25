@@ -1,22 +1,39 @@
-<div class="container">
+<div class="containerConsulta">
+<div class="container py-4">
   <div class="row">
-    <div class="col-md-4">
-      <h3>Filtros de Búsqueda</h3>
-      <formio #formioElement [form]="formDefinition"></formio>
+    <!-- Columna de filtros (Formio) -->
+    <div class="col-md-6 mx-auto">
+      <div class="card shadow border-0">
+        <div class="card-header bg-white border-0 text-center py-3">
+          <h1 class="h3 font-weight-bold text-primary">Sistema de Consulta de Personas 2024/25</h1>
+          <p class="mb-0 text-muted">Formulario de Búsqueda</p>
+          <p class="font-weight-bold">REPÚBLICA DEL PARAGUAY</p>
+          <img src="https://www.copaco.com.py/images/joomlapar/Noticias/2024/Republica-del-Paraguay.png.png" alt="República del Paraguay" class="img-fluid" style="max-width: 200px; height: auto;">
+        </div>
+        <div class="card-body px-4 py-3">
+          <!-- Componente -->
+          <formio #formioElement [form]="formDefinition" class="formio-form-custom"></formio>
+          <hr class="my-4">
+        </div>
+      </div>
     </div>
-    <div class="text-center">
-      <h3>Resultados</h3>
-      <div id="personas-table"></div>
-    </div>
-
     
+    <!-- Columna de resultados tabulator-->
+    <div class="col-md-12 mt-4">
+      <div class="card shadow">
+        <div class="card-header bg-light">
+          <h3 class="mb-0 text-center" >Resultados</h3>
+        </div>
+        <div class="card-body">
+          <div id="personas-table" class="table-responsive">
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
-<footer>
-    <div class="text-center">
-        <p>
-
-            
-        </p>
-    </div>
-</footer>
+</div>
+<!-- Spinner de carga -->
+<!-- <div class="loading-overlay">
+  <div class="spinner"></div>
+</div> -->
