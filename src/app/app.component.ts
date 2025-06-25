@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+import { ConsultaListarComponent } from './consulta/consulta-listar/consulta-listar.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet],
+  imports: [ConsultaListarComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })

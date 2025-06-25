@@ -1,0 +1,12 @@
+#personas-table {
+  margin-top: 20px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.formio-form {
+  background: #f9f9f9;
+  padding: 20px;
+  border-radius: 4px;
+  margin-bottom: 20px;
+}
