@@ -1,5 +1,17 @@
 # ConsultaDatosPydbFrontend
 
+```
+npm install --save @formio/angular --legacy-peer-deps
+```
+```
+npm install --save @formio/js --legacy-peer-deps 
+```
+
+```
+npm install tabulator-tables --legacy-peer-deps 
+```
+
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.3.14.
 
 ## Development server
