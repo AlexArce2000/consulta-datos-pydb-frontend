@@ -14,7 +14,6 @@ import { FormioModule } from '@formio/angular';
 })
 export class ConsultaListarComponent {
   tabulatorTable: any;
-  
   formDefinition = {
     components: [
       {
@@ -42,35 +41,33 @@ export class ConsultaListarComponent {
         input: true,
         widget: {
           type: 'calendar',
-          displayInTimezone: 'utc',
-          locale: 'es',
-          useLocaleSettings: true,
           allowInput: true,
           mode: 'single',
-          enableTime: false,
-          noCalendar: false,
           format: 'yyyy-MM-dd',
-          hourIncrement: 1,
-          minuteIncrement: 1,
-          time_24hr: false
         }
       },
       {
         type: 'button',
-        key: 'submit',
+        key: 'search',
         label: 'Buscar',
-        action: 'submit',
-        theme: 'primary'
+        action: 'event', // Cambiado de 'submit' a 'event'
+        event: 'searchClicked'
       }
     ]
   };
 
   constructor(private personaService: PersonaService) {}
+  @ViewChild('formioElement') formioElement: any;
 
   ngOnInit() {
     this.initTabulator();
   }
-
+  ngAfterViewInit() {
+    this.formioElement.formio.on('searchClicked', () => {
+      const formData = this.formioElement.formio.data;
+      this.performSearch(formData);
+    });
+  }
   initTabulator(data: any[] = []) {
     this.tabulatorTable = new Tabulator('#personas-table', {
       data: data,
@@ -79,7 +76,7 @@ export class ConsultaListarComponent {
       placeholder: 'No se encontraron registros',
       columns: [
         { title: 'Cédula', field: 'cedula', sorter: 'number', width: 120 },
-        { title: 'Nombre', field: 'nombres', sorter: 'string' },
+        { title: 'Nombre', field: 'nombres', sorter: 'string',  },
         { title: 'Apellido', field: 'apellido', sorter: 'string' },
         { 
           title: 'Fecha Nacimiento', 
@@ -118,16 +115,17 @@ export class ConsultaListarComponent {
     });
   }
 
-  onSubmit(event: any) {
-    console.log('Formulario enviado:', event.data);
-    if (event.data) {
-      this.personaService.buscarPersonas(event.data).subscribe(
+  performSearch(formData: any) {
+    console.log('Formulario enviado:', formData);
+    this.tabulatorTable.clearData();
+    if (formData) {
+      this.personaService.buscarPersonas(formData).subscribe(
         (response: any) => {
           this.tabulatorTable.setData(response);
         },
         (error) => {
           console.error('Error al buscar personas:', error);
-          this.tabulatorTable.clearData();
+          alert('Error al buscar personas. Por favor, intente nuevamente.');
         }
       );
     }

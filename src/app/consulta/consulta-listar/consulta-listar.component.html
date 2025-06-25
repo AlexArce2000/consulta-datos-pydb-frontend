@@ -2,11 +2,20 @@
   <div class="row">
     <div class="col-md-4">
       <h3>Filtros de Búsqueda</h3>
-      <formio [form]="formDefinition" (submit)="onSubmit($event)"></formio>
+      <formio #formioElement [form]="formDefinition"></formio>
     </div>
     <div class="text-center">
       <h3>Resultados</h3>
       <div id="personas-table"></div>
     </div>
+
   </div>
 </div>
+<footer>
+    <div class="text-center">
+        <p>
+
+            
+        </p>
+    </div>
+</footer>
