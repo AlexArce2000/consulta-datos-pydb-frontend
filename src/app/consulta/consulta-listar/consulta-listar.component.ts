@@ -2,77 +2,22 @@ import { Component, ViewChild} from '@angular/core';
 import { TabulatorFull as Tabulator } from 'tabulator-tables';
 import { CommonModule } from '@angular/common';
 import { PersonaService } from '../services/persona.service';
-import { Formio } from '@formio/js';
+import form from './form.json';
+import { MessageService } from 'primeng/api';
 import { FormioModule } from '@formio/angular';
-
+import { ToastModule } from 'primeng/toast';
 @Component({
   selector: 'app-consulta-listar',
   standalone: true,
-  imports: [CommonModule, FormioModule],
+  imports: [CommonModule, FormioModule, ToastModule],
+  providers: [MessageService],
   templateUrl: './consulta-listar.component.html',
   styleUrls: ['./consulta-listar.component.css']
 })
 export class ConsultaListarComponent {
   tabulatorTable: any;
-  formDefinition = {
-    components: [
-      {
-        type: 'textfield',
-        key: 'nombre',
-        label: 'Nombres',
-        input: true
-      },
-      {
-        type: 'textfield',
-        key: 'apellido',
-        label: 'Apellidos',
-        input: true
-      },
-      {
-        type: 'textfield',
-        key: 'cedula',
-        label: 'Cédula de Identidad',
-        input: true
-      },
-      {
-        type: 'datetime',
-        key: 'fechaNac',
-        label: 'Fecha de Nacimiento',
-        input: true,
-        widget: {
-          type: 'calendar',
-          allowInput: true,
-          mode: 'single',
-          format: 'yyyy-MM-dd',
-        }
-      },
-      {
-        type: 'button',
-        key: 'search',
-        label: 'Buscar',
-        action: 'event',
-        event: 'searchClicked',
-        theme: 'primary',
-        customClass: 'text-center', // Centrar el botón
-        input: true,
-        size: 'lg', // Tamaño grande
-        block: true // Ocupar todo el ancho 
-      },
-      {
-        type: 'button',
-        key: 'clear',
-        label: 'Limpiar',
-        action: 'reset',
-        theme: 'secondary',
-        customClass: 'text-center', // Centrar el botón
-        input: true,
-        size: 'lg', // Tamaño grande
-        block: true // Ocupar todo el ancho 
-      }
-    ]
-  };
-
-  constructor(private personaService: PersonaService) {}
+  formDefinition = form;
+  constructor(private personaService: PersonaService, private messageService: MessageService) {}
   @ViewChild('formioElement') formioElement: any;
 
   ngOnInit() {
@@ -138,10 +83,19 @@ export class ConsultaListarComponent {
       this.personaService.buscarPersonas(formData).subscribe(
         (response: any) => {
           this.tabulatorTable.setData(response);
+          this.messageService.add({
+            severity: 'success',
+            summary: 'Éxito',
+            detail: 'Persona/as encontrada/as exitosamente.'
+          });
         },
         (error) => {
+          this.messageService.add({
+            severity: 'error',
+            summary: 'Error',
+            detail: 'Error al buscar personas. Por favor, intente nuevamente.'
+          });
           console.error('Error al buscar personas:', error);
-          alert('Error al buscar personas. Por favor, intente nuevamente.');
         }
       );
     }

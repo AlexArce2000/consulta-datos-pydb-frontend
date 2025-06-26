@@ -1,0 +1,57 @@
+{
+    "components": [
+        {
+        "type": "textfield",
+        "key": "nombre",
+        "label": "Nombres",
+        "input": true
+        },
+        {
+        "type": "textfield",
+        "key": "apellido",
+        "label": "Apellidos",
+        "input": true
+        },
+        {
+        "type": "textfield",
+        "key": "cedula",
+        "label": "Cédula de Identidad",
+        "input": true
+        },
+        {
+        "type": "datetime",
+        "key": "fechaNac",
+        "label": "Fecha de Nacimiento",
+        "input": true,
+        "widget": {
+            "type": "calendar",
+            "allowInput": true,
+            "mode": "single",
+            "format": "yyyy-MM-dd"
+        }
+        },
+        {
+        "type": "button",
+        "key": "search",
+        "label": "Buscar",
+        "action": "event",
+        "event": "searchClicked",
+        "theme": "primary",
+        "customClass": "text-center",
+        "input": true,
+        "size": "lg",
+        "block": true 
+        },
+        {
+        "type": "button",
+        "key": "clear",
+        "label": "Limpiar",
+        "action": "reset",
+        "theme": "secondary",
+        "customClass": "text-center",
+        "input": true,
+        "size": "lg", 
+        "block": true 
+        }
+    ]
+}
