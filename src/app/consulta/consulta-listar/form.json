@@ -19,7 +19,7 @@
         "input": true
         },
         {
-        "type": "datetime",
+        "type": "textfield",
         "key": "fechaNac",
         "label": "Fecha de Nacimiento",
         "input": true,
@@ -47,6 +47,7 @@
         "key": "clear",
         "label": "Limpiar",
         "action": "reset",
+        "event": "clearClicked",
         "theme": "secondary",
         "customClass": "text-center",
         "input": true,

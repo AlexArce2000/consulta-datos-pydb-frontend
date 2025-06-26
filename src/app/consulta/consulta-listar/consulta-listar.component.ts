@@ -17,6 +17,7 @@ import { ToastModule } from 'primeng/toast';
 export class ConsultaListarComponent {
   tabulatorTable: any;
   formDefinition = form;
+  loading = false;
   constructor(private personaService: PersonaService, private messageService: MessageService) {}
   @ViewChild('formioElement') formioElement: any;
 
@@ -28,6 +29,11 @@ export class ConsultaListarComponent {
       const formData = this.formioElement.formio.data;
       this.performSearch(formData);
     });
+  }
+  ngOnDestroy() {
+    if (this.tabulatorTable) {
+      this.tabulatorTable.destroy();
+    }
   }
   initTabulator(data: any[] = []) {
     this.tabulatorTable = new Tabulator('#personas-table', {
@@ -79,6 +85,7 @@ export class ConsultaListarComponent {
   performSearch(formData: any) {
     console.log('Formulario enviado:', formData);
     this.tabulatorTable.clearData();
+    this.loading = true;
     if (formData) {
       this.personaService.buscarPersonas(formData).subscribe(
         (response: any) => {
@@ -88,6 +95,7 @@ export class ConsultaListarComponent {
             summary: 'Éxito',
             detail: 'Persona/as encontrada/as exitosamente.'
           });
+          this.loading = false;
         },
         (error) => {
           this.messageService.add({
@@ -95,6 +103,7 @@ export class ConsultaListarComponent {
             summary: 'Error',
             detail: 'Error al buscar personas. Por favor, intente nuevamente.'
           });
+          this.loading = false;
           console.error('Error al buscar personas:', error);
         }
       );
