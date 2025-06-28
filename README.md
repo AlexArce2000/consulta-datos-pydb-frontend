@@ -1,5 +1,11 @@
 # ConsultaDatosPydbFrontend
 
+
+```
+npm install --legacy-peer-deps
+```
+
+
 ```
 npm install --save @formio/angular --legacy-peer-deps
 ```
@@ -9,6 +15,10 @@ npm install --save @formio/js --legacy-peer-deps
 
 ```
 npm install tabulator-tables --legacy-peer-deps 
+```
+
+```
+npm install primeng@17 primeicons --legacy-peer-deps
 ```
 
 
